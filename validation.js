@@ -31,7 +31,7 @@ form.addEventListener('submit', async (e)=>{
       try {
            postusers(urlApply, data).then((res) => {
                 console.log(res?.message); // JSON data parsed by `data.json()` call
-                if((res?.message === 'email already exist') || (res?.message === "phone number already exist")) {
+                if((res?.message === 'email already exist') || (res?.message === "phone number already exist") ||(res?.message ==="invalid phone number")) {
                     frontendResponse.style.color = 'red'
                     console.log(frontendResponse);
                 } else {
