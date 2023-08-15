@@ -44,7 +44,7 @@ form.addEventListener('submit', async (e)=>{
             });
             
         } catch (error) {
-            return frontendResponse.textContent = 'network issue'
+            return frontendResponse.textContent = 'network issue contact your network provider'
         }
        
 }) 
