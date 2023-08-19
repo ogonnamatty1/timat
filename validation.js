@@ -1,6 +1,6 @@
 
 import postusers  from './js/modules/postData.js';
-const urlApply = "http://127.0.0.1:8000/api/timatech/apply";
+const urlApply = "https://timat-backendredo.vercel.app/";
 
 const form = document.querySelector('#form');
 const frontendResponse = document.querySelector('.api_response')
