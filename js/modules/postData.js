@@ -1,6 +1,6 @@
  async function postusers(url, data) {
     // Default options are marked with *
-    const response =  await fetch(url, {
+    const response = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
     //   cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

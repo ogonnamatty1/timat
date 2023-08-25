@@ -1,7 +1,6 @@
 
 import postusers  from './js/modules/postData.js';
-const urlApply = "https://timat-backendredo.vercel.app/";
-
+const urlApply = "https://timat-backend.vercel.app/api/timatech/apply";
 const form = document.querySelector('#form');
 const frontendResponse = document.querySelector('.api_response')
 const whatsappGroup = document.querySelector('.whatsapp-group>a')
@@ -13,11 +12,10 @@ form.addEventListener('submit', async (e)=>{
     const name = document.querySelector('#name').value;
     const phone = document.querySelector('#phone').value;
     const email = document.querySelector('#email').value;
-    
-    const data = {name, phone, email }
+    const userData = {name, phone, email };
    
     
-    // console.log('working');
+    console.log('working');
     // const handleRegister = await fetch(url, {
     //     method:'POST',
     //     headers:{
@@ -29,14 +27,14 @@ form.addEventListener('submit', async (e)=>{
     // console.log('handleRegister', handleRegister);
    
       try {
-           postusers(urlApply, data).then((res) => {
+           postusers(urlApply, userData).then((res) => {
                 console.log(res?.message); // JSON data parsed by `data.json()` call
-                if((res?.message === 'email already exist') || (res?.message === "phone number already exist") ||(res?.message ==="invalid phone number")) {
+                if((res?.message === 'E-mail already exist') || (res?.message === "Phone number already exist") ||(res?.message ==="Invalid phone number")) {
                     frontendResponse.style.color = 'red'
                     console.log(frontendResponse);
                 } else {
                     frontendResponse.style.color = 'green'
-                    whatsappGroup.textContent= 'click to join whatsapp group'
+                    whatsappGroup.textContent= 'Click to join our whatsapp group'
                     setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 5000)
                 }
                 return frontendResponse.textContent = res?.message
@@ -44,7 +42,7 @@ form.addEventListener('submit', async (e)=>{
             });
             
         } catch (error) {
-            return frontendResponse.textContent = 'network issue contact your network provider'
+            return frontendResponse.textContent = 'Network issue contact your network provider'
         }
        
 }) 
