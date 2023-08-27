@@ -142,36 +142,55 @@ form.addEventListener('submit', async (e)=>{
     const data = {name, phone, email }
    
     
-    // console.log('working');
-    // const handleRegister = await fetch(url, {
-    //     method:'POST',
-    //     headers:{
-    //         "Content-Type":"application/json"
-    //     },
-    //     body:JSON.stringify({name, phone, email, }),
-    //     return handleRegister;
-    // })
-    // console.log('handleRegister', handleRegister);
-   
-      try {
-           postusers(urlApply, data).then((res) => {
-                console.log(res?.message); // JSON data parsed by `data.json()` call
-                if((res?.message === 'email already exist') || (res?.message === "phone number already exist") ||(res?.message ==="invalid phone number")) {
-                    frontendResponse.style.color = 'red'
-                    console.log(frontendResponse);
-                } else {
-                    frontendResponse.style.color = 'green'
-                    whatsappGroup.textContent= 'click to join whatsapp group'
-                    setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 5000)
-                }
-                return frontendResponse.textContent = res?.message
-                
-            });
+    const datafile = {
+        image: "string | Url",
+        title: "string",
+        content: "string",
+        youtube_link: "string | Url",
+    }
+
+    console.log('working');
+    try {
+        postusers('http://localhost:8000/api/v1/story', datafile).then((res) => {
+            console.log(res?.message); // JSON data parsed by `data.json()` call
+            if((res?.message === 'E-mail already exist') || (res?.message === "Phone number already exist") ||(res?.message ==="Invalid phone number")) {
+                frontendResponse.style.color = 'red'
+                console.log(frontendResponse);
+            } else {
+                frontendResponse.style.color = 'green'
+                whatsappGroup.textContent= 'Click to join our whatsapp group'
+                setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 5000)
+            }
+            return frontendResponse.textContent = res?.message
             
-        } catch (error) {
-            return frontendResponse.textContent = 'network issue contact your network provider'
+        });
+        
+    } catch (error) {
+        return frontendResponse.textContent = 'Network issue contact your network provider'
+    }
+
+
+    //Only use this if your api is not available... 
+    //just a small frontend get around implementation
+    try {
+        if (!userData){
+            return frontendResponse.textContent = 'Network issue contact your network provider'
         }
-       
+        frontendResponse.style.color = 'green'
+        setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 5000)
+        
+        return whatsappGroup.textContent= 'Click to join our whatsapp group'
+    } catch (error) {
+        
+    }
+    
+            if (!userData){
+                return frontendResponse.textContent = 'Network issue contact your network provider'
+            }
+            frontendResponse.style.color = 'green'
+            setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 5000)
+            return whatsappGroup.textContent= 'Click to join our whatsapp group'
+    
 }) 
 
 
