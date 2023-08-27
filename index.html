@@ -52,13 +52,15 @@
                         <p>We make it simpler</p>
                         <form action="" method="post" id="form" autocomplete="on">
                             <div>
-                                <input autocomplete="name" type="text" name="" id="name" placeholder="Your Name"  required>
+                                <input autocomplete="name" type="text" name="" id="name" placeholder="Your Name" pattern="[A-Za-z]{3,20}" title="Name should be 3-20 characters" required>
                             </div>
                             <div>
-                                <input type="number" autocomplete="tel" name="" id="phone" placeholder="Your phonenumber" required>
+                                <!-- The regex on the phone number ckecks for (0, +234) and 8 digit after the prefix of (0, +234) -->
+                                <input autocomplete="tel" name="" id="phone" placeholder="Your phonenumber" type="text" 
+                                pattern="(?:9|0\d|\+234\d)\d{9}" title="Phone number must match standard 11 digit phone number" required>
                             </div>
                             <div>
-                                <input type="email" autocomplete="email" name="" id="email" placeholder="Your Email" required>
+                                <input type="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Kindly pass a valid email" autocomplete="email" name="" id="email" placeholder="Your Email" required>
                             </div>
                             <p class="api_response" style="color: greenyellow;"></p>
                             <p class="whatsapp-group"> <a href=" https://chat.whatsapp.com/KDEqD2SIrcj4zkpqfKoQXt "> </a></p>

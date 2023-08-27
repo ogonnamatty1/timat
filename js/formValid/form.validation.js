@@ -16,3 +16,8 @@ const validatePassword = (password) => {
    const reg = /^[a-zA-Z0-9_]{6,18}$/;
    return reg.test(password);
 };
+
+//Todo 3. delete file
+// Hey Mathew i want to delete this file cause it has no 
+//use... i have implemented the login directly to the input tag already 
+//so kindly delete this file
