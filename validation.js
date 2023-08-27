@@ -173,7 +173,7 @@ form.addEventListener('submit', async (e)=>{
     //Only use this if your api is not available... 
     //just a small frontend get around implementation
     try {
-        if (!userData){
+        if (!data){
             return frontendResponse.textContent = 'Network issue contact your network provider'
         }
         frontendResponse.style.color = 'green'
@@ -184,7 +184,7 @@ form.addEventListener('submit', async (e)=>{
         
     }
     
-            if (!userData){
+            if (!data){
                 return frontendResponse.textContent = 'Network issue contact your network provider'
             }
             frontendResponse.style.color = 'green'
