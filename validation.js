@@ -185,7 +185,12 @@ form.addEventListener('submit', async (e)=>{
         
     }
     
-    
+            if (!userData){
+                return frontendResponse.textContent = 'Network issue contact your network provider'
+            }
+            frontendResponse.style.color = 'green'
+            setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 5000)
+            return whatsappGroup.textContent= 'Click to join our whatsapp group'
     
 }) 
 
