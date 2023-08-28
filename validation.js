@@ -121,9 +121,6 @@
 // }) 
 
 
-
-
-
 import postusers  from './js/modules/postData.js';
 const urlApply = "http://127.0.0.1:8000/api/timatech/apply";
 
@@ -140,6 +137,7 @@ form.addEventListener('submit', async (e)=>{
     const email = document.querySelector('#email').value;
     
     const data = {name, phone, email }
+     const splitPhone = phone.split('')
    
     
     const datafile = {
@@ -150,46 +148,44 @@ form.addEventListener('submit', async (e)=>{
     }
 
     console.log('working');
-    try {
-        postusers('http://localhost:8000/api/v1/story', datafile).then((res) => {
-            console.log(res?.message); // JSON data parsed by `data.json()` call
-            if((res?.message === 'E-mail already exist') || (res?.message === "Phone number already exist") ||(res?.message ==="Invalid phone number")) {
-                frontendResponse.style.color = 'red'
-                console.log(frontendResponse);
-            } else {
-                frontendResponse.style.color = 'green'
-                whatsappGroup.textContent= 'Click to join our whatsapp group'
-                setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 5000)
-            }
-            return frontendResponse.textContent = res?.message
-            
-        });
-        
-    } catch (error) {
-        return frontendResponse.textContent = 'Network issue contact your network provider'
-    }
-
+   
 
     //Only use this if your api is not available... 
     //just a small frontend get around implementation
     try {
-        if (!userData){
-            return frontendResponse.textContent = 'Network issue contact your network provider'
+        if (!data){
+            return frontendResponse.textContent = 'something is wrong try again'
         }
-        frontendResponse.style.color = 'green'
-        setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 5000)
-        
-        return whatsappGroup.textContent= 'Click to join our whatsapp group'
+        else if (splitPhone[0]!=="0") {
+            frontendResponse.style.color = 'red'
+            setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 3000)
+         return frontendResponse.textContent = 'invalid phone number'  
+        }
+     
+        else if (splitPhone.length !==11) {
+            frontendResponse.style.color = 'red'
+            setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 3000)
+         return frontendResponse.textContent = 'invalid phone number'  
+        }
+
+       
+        else{
+            frontendResponse.style.color = 'green'
+            setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 5000)
+            console.log(phone);
+            console.log(splitPhone.length);
+            console.log(splitPhone[0]);
+            
+            return whatsappGroup.textContent= 'Click to join our whatsapp group'
+        }
+       
     } catch (error) {
+        console.log(error);
+        return frontendResponse.textContent = 'Network issue contact your network provider'
         
     }
     
-            if (!userData){
-                return frontendResponse.textContent = 'Network issue contact your network provider'
-            }
-            frontendResponse.style.color = 'green'
-            setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 5000)
-            return whatsappGroup.textContent= 'Click to join our whatsapp group'
+    
     
 }) 
 
@@ -197,3 +193,21 @@ form.addEventListener('submit', async (e)=>{
 
 
 
+ // try {
+    //     postusers('http://localhost:8000/api/v1/story', datafile).then((res) => {
+    //         console.log(res?.message); // JSON data parsed by `data.json()` call
+    //         if((res?.message === 'E-mail already exist') || (res?.message === "Phone number already exist") ||(res?.message ==="Invalid phone number")) {
+    //             frontendResponse.style.color = 'red'
+    //             console.log(frontendResponse);
+    //         } else {
+    //             frontendResponse.style.color = 'green'
+    //             // whatsappGroup.textContent= 'Click to join our whatsapp group'
+    //             setTimeout(()=> {frontendResponse.textContent="", form.reset()}, 5000)
+    //         }
+    //         return frontendResponse.textContent = res?.message
+            
+    //     });
+        
+    // } catch (error) {
+    //     return frontendResponse.textContent = 'Network issue contact your network provider'
+    // }

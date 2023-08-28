@@ -16,3 +16,4 @@ const validatePassword = (password) => {
    const reg = /^[a-zA-Z0-9_]{6,18}$/;
    return reg.test(password);
 };
+export default {validateName, validatePhoneNum }

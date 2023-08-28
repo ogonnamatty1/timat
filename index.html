@@ -52,13 +52,13 @@
                         <p>We make it simpler</p>
                         <form action="" method="post" id="form" autocomplete="on">
                             <div>
-                                <input autocomplete="name" type="text" name="" id="name" placeholder="Your Name"  required>
+                                <input  class="name" type="text" name="" id="name" placeholder="Your Name"  required>
                             </div>
                             <div>
-                                <input type="number" autocomplete="tel" name="" id="phone" placeholder="Your phonenumber" required>
+                                <input type="number" class="tel" name="" id="phone" placeholder="Your phonenumber"  title="invalid phone number, please check">
                             </div>
                             <div>
-                                <input type="email" autocomplete="email" name="" id="email" placeholder="Your Email" required>
+                                <input type="email" class="email" name="" id="email" placeholder="Your Email" required>
                             </div>
                             <p class="api_response" style="color: greenyellow;"></p>
                             <p class="whatsapp-group"> <a href=" https://chat.whatsapp.com/KDEqD2SIrcj4zkpqfKoQXt "> </a></p>
@@ -155,6 +155,7 @@
         
 
         <script src="./js/index.js" ></script>
+        <script src="./js/formValid/form.validation.js"></script>
         <script src="./validation.js" type="module"></script>
     </body>
 </html>
